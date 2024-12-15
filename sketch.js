@@ -4,7 +4,6 @@ function setup() {
   createCanvas(800, 400);
   particleSystem = new ParticleSystem();
 }
-
 function draw() {
   background(30, 30, 50, 50);
   particleSystem.applyMouseAttraction(createVector(mouseX, mouseY), 100);

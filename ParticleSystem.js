@@ -1,7 +1,7 @@
 class ParticleSystem {
     constructor() {
       this.particles = [];
-      for (let i = 0; i < 200; i++) {
+      for (let i = 0; i < 400; i++) {
         this.particles.push(new Particle(random(width), random(height)));
       }
     }
