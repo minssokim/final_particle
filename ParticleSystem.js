@@ -12,7 +12,7 @@ class ParticleSystem {
           if (distance < radius) {
             direction.normalize(); // 방향만 남기고 크기를 1로 설정
             let strength = map(distance, 0, radius, 1, 0); // 거리 비율에 따라 힘 약화
-            let force = direction.mult(-strength * 0.5); // 힘의 크기와 방향 설정
+            let force = direction.mult(-strength * 0.03); // 힘의 크기와 방향 설정
             p.applyForce(force);
             this.followStrength = constrain(this.followStrength + 0.01, 0, 1);
           }
