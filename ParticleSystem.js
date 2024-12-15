@@ -11,6 +11,15 @@ class ParticleSystem {
         p.applyForce(force);
       }
     }
+    applyForceInRadius(force, center, radius) {
+        for (let p of this.particles) {
+          let distance = p.pos.dist(center); 
+          if (distance < radius) {
+            let scaledForce = force.copy().mult(1 - distance / radius); 
+            p.applyForce(scaledForce);
+          }
+        }
+      }
   
     update() {
       for (let p of this.particles) {
