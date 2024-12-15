@@ -4,7 +4,7 @@ class Particle {
       this.vel = createVector(random(-1, 1), random(-1, 1));
       this.acc = createVector(0, 0);
       this.maxSpeed = 2;
-      this.followStrength = 1;
+      this.followStrength = 0.1;
     }
   
     applyForce(force) {
