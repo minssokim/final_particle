@@ -16,7 +16,7 @@ class Particle {
       this.vel.limit(this.maxSpeed); 
       this.pos.add(this.vel);
       this.acc.mult(0);
-      this.followStrength = constrain(this.followStrength + 0.01, 0, 1);
+      
     }
   
     edges() {

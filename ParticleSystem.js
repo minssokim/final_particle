@@ -6,6 +6,11 @@ class ParticleSystem {
       }
     }
     applyMouseAttraction(center, radius) {
+        let totalFlow = createVector(0, 0);
+        for (let p of this.particles) {
+            totalFlow.add(p.vel);
+          }
+        totalFlow.div(this.particles.length);
         for (let p of this.particles) {
           let direction = p.pos.copy().sub(center); 
           let distance = direction.mag(); 
@@ -14,6 +19,7 @@ class ParticleSystem {
             let strength = map(distance, 0, radius, 1, 0); 
             let force = direction.mult(-strength * 0.5); 
             p.applyForce(force);
+            p.followStrength = constrain(p.followStrength - 0.1, 0, 1);
             this.followStrength = constrain(this.followStrength + 0.01, 0, 1);
           }
         }
