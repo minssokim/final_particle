@@ -20,6 +20,7 @@ class ParticleSystem {
             let oppositeFlow = totalFlow.copy().mult(-1);
             let force = direction.mult(-strength * 0.5); 
             p.vel = oppositeFlow.copy().setMag(p.maxSpeed * strength);
+            p.maintainDirection = random(1) < 0.2;
             p.applyForce(force);
             p.applyForce(oppositeFlow);
             p.isMouseReactive = true;
