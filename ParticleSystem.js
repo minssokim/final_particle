@@ -14,13 +14,15 @@ class ParticleSystem {
         for (let p of this.particles) {
           let direction = p.pos.copy().sub(center); 
           let distance = direction.mag(); 
-          if (distance < radius) {
-            direction.normalize(); 
-            let strength = map(distance, 0, radius, 1, 0); 
-            let oppositeFlow = totalFlow.copy().mult(-strength);
+          if (distance < radius && !p.isMouseReactive) {
+            direction.normalize();
+            let strength = map(distance, 0, radius, 1, 0) * p.followStrength;
+            let oppositeFlow = totalFlow.copy().mult(-1);
             let force = direction.mult(-strength * 0.5); 
+            p.vel = oppositeFlow.copy().setMag(p.maxSpeed * strength);
             p.applyForce(force);
             p.applyForce(oppositeFlow);
+            p.isMouseReactive = true;
             p.followStrength = constrain(p.followStrength - 0.1, 0, 1);
           }
         }

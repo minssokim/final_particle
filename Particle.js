@@ -5,6 +5,7 @@ class Particle {
       this.acc = createVector(0, 0);
       this.maxSpeed = 2;
       this.followStrength = 0.1;
+      this.isMouseReactive = false;
     }
   
     applyForce(force) {
@@ -16,7 +17,9 @@ class Particle {
       this.vel.limit(this.maxSpeed); 
       this.pos.add(this.vel);
       this.acc.mult(0);
-      
+      if (this.isMouseReactive) {
+        this.isMouseReactive = false; // 마우스 반응 상태를 한 번 유지 후 해제
+      }
     }
   
     edges() {
