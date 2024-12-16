@@ -17,19 +17,21 @@ class ParticleSystem {
           if (distance < radius) {
             direction.normalize(); 
             let strength = map(distance, 0, radius, 1, 0); 
+            let oppositeFlow = totalFlow.copy().mult(-strength);
             let force = direction.mult(-strength * 0.5); 
             p.applyForce(force);
+            p.applyForce(oppositeFlow);
             p.followStrength = constrain(p.followStrength - 0.1, 0, 1);
           }
         }
       }
-    applyForce(force) {
-      for (let p of this.particles) {
-        p.applyForce(force);
-      }
-    }
     
-  
+      applyForce(force) {
+        for (let p of this.particles) {
+          p.applyForce(force);
+        }
+      }
+
     update() {
       for (let p of this.particles) {
         p.update();
