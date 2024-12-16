@@ -20,7 +20,6 @@ class ParticleSystem {
             let force = direction.mult(-strength * 0.5); 
             p.applyForce(force);
             p.followStrength = constrain(p.followStrength - 0.1, 0, 1);
-            this.followStrength = constrain(this.followStrength + 0.01, 0, 1);
           }
         }
       }
