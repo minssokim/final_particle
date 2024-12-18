@@ -2,6 +2,7 @@ let particleSystem;
 
 function setup() {
   createCanvas(800, 600);
+  noCursor();
   particleSystem = new ParticleSystem();
 }
 function draw() {
