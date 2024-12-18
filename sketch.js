@@ -4,6 +4,7 @@ function setup() {
   createCanvas(800, 600);
   noCursor();
   particleSystem = new ParticleSystem();
+
 }
 function draw() {
   background(30, 30, 50, 50);
